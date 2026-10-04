@@ -1,13 +1,9 @@
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart' as flutter;
 import 'package:google_fonts/google_fonts.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:rain/core/config/settings_catalog.dart';
-import 'package:rain/core/theme/material_scheme_bridge.dart';
 
-typedef _GoogleTextThemeBuilder = flutter.TextTheme Function([
-  flutter.TextTheme?,
-]);
+typedef _GoogleTextThemeBuilder = TextTheme Function([TextTheme?]);
 
 /// One row in the app font picker ([id] is stored in Isar settings).
 class _FontEntry {
@@ -23,7 +19,7 @@ class _FontEntry {
     if (_system) {
       return base.apply(fontFamily: AppFont.platformFontFamily());
     }
-    return textThemeFromFlutter(_googleTextTheme!(textThemeToFlutter(base)));
+    return _googleTextTheme!(base);
   }
 }
 
